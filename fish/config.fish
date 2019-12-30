@@ -1,4 +1,7 @@
 set PATH /usr/local/bin /usr/sbin $PATH
+set -x RBENV_ROOT "$HOME/.rbenv"
+#set PATH $RBENV_ROOT $PATH
+status --is-interactive; and source (rbenv init -|psub)
 
 set PATH $HOME/.pyenv/shims $PATH
 eval (pyenv init - | source)
