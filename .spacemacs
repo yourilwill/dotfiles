@@ -310,7 +310,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; ウィンドウを半透明にする
   (if window-system
       (progn
-        (set-frame-parameter nil 'alpha 90)
+        (set-frame-parameter nil 'alpha 80)
         )
     )
   )
