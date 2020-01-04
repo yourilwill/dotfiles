@@ -205,7 +205,7 @@ values."
    ;; if non nil, the helm header is hidden when there is only one source.
    ;; (default nil)
    dotspacemacs-helm-no-header nil
-   ;; define the position to display `helm', options are `bottom', `top',
+   ;; d(define-key evil-hybrid-state-map (kbd "C-]") 'forward-char)efine the position to display `helm', options are `bottom', `top',
    ;; `left', or `right'. (default 'bottom)
    dotspacemacs-helm-position 'bottom
    ;; Controls fuzzy matching in helm. If set to `always', force fuzzy matching
@@ -330,6 +330,7 @@ you should place your code here."
   (bind-key "C-h" 'delete-backward-char)
   (bind-key "C-S-<tab>" 'previous-buffer)
   (bind-key "C-<tab>" 'next-buffer)
+  (define-key evil-hybrid-state-map (kbd "C-o") 'evil-execute-in-normal-state)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
