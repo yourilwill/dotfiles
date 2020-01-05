@@ -331,6 +331,7 @@ you should place your code here."
   (bind-key "C-S-<tab>" 'previous-buffer)
   (bind-key "C-<tab>" 'next-buffer)
   (define-key evil-hybrid-state-map (kbd "C-o") 'evil-execute-in-normal-state)
+  (setq ruby-indent-level 2)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
