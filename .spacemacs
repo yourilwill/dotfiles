@@ -144,7 +144,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 15
+                               :size 18
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -238,7 +238,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -314,7 +314,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; ウィンドウを半透明にする
   (if window-system
       (progn
-        (set-frame-parameter nil 'alpha 80)
+        (set-frame-parameter nil 'alpha 90)
       )
   )
   (setq neo-theme 'icons)
@@ -333,6 +333,7 @@ you should place your code here."
   (bind-key "C-<tab>" 'next-buffer)
   (define-key evil-hybrid-state-map (kbd "C-o") 'evil-execute-in-normal-state)
   (setq ruby-indent-level 2)
+  (load-theme 'solarized-dark-high-contrast t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
