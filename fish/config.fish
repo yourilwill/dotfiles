@@ -1,5 +1,6 @@
 set PATH /usr/local/bin /usr/sbin $PATH
 set -x RBENV_ROOT "$HOME/.rbenv"
+status --is-interactive; and source (anyenv init -|psub)
 #set PATH $RBENV_ROOT $PATH
 status --is-interactive; and source (rbenv init -|psub)
 
