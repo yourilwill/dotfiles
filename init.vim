@@ -23,7 +23,7 @@ if dein#load_state('~/.cache/dein')
  
   " Add or remove your plugins here like this:
   "call dein#add('Shougo/neosnippet.vim')
-  "call dein#add('Shougo/neosnippet-snippets')
+  "calet  dein#add('Shougo/neosnippet-snippets')
 
   " Required:
   call dein#end()
