@@ -57,6 +57,8 @@ noremap <Space>init :<C-u>edit $MYVIMRC<CR>    " init.vim呼び出し
 "noremap <Space>s :source $MYVIMRC<CR>          " init.vim読み込み
 noremap <Space>fr :source $MYVIMRC<CR>          " init.vim読み込み
 noremap <Leader>w :<C-u>w<CR>                   " ファイル保存
+nmap <silent> [ale]<C-P> <Plug>(ale_previous)
+nmap <silent> [ale]<C-N> <Plug>(ale_next)
 
 " Insert mode
 inoremap <silent> fd <ESC>:<C-u>w<CR>" Insert modeを抜けてファイルを保存
