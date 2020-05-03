@@ -55,7 +55,7 @@ noremap <Space>init :<C-u>edit $MYVIMRC<CR>    " init.vim呼び出し
 "noremap <Space>fed :<C-u>edit $MYVIMRC<CR>     " init.vim呼び出し
 "command init :<C-u>edit $MYVIMRC<CR>          " init.vim呼び出し
 "noremap <Space>s :source $MYVIMRC<CR>          " init.vim読み込み
-noremap <Space>fr :source $MYVIMRC<CR>          " init.vim読み込み
+noremap <Leader>fr :source $MYVIMRC<CR>          " init.vim読み込み
 noremap <Leader>w :<C-u>w<CR>                   " ファイル保存
 nmap <silent> [ale]<C-P> <Plug>(ale_previous)
 nmap <silent> [ale]<C-N> <Plug>(ale_next)
