@@ -25,3 +25,6 @@ end
 
 # 一覧の上を最新として、境目をボーダーに
 set -x FZF_DEFAULT_OPTS "--height 10% --reverse --border"
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
