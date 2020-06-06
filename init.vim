@@ -51,7 +51,7 @@ syntax enable
 "  keybind
 " --------------------------------------------------
 "  Normal mode
-noremap <Space>init :<C-u>edit $MYVIMRC<CR>    " init.vim呼び出し
+noremap <Leader>init :<C-u>edit $MYVIMRC<CR>    " init.vim呼び出し
 "noremap <Space>fed :<C-u>edit $MYVIMRC<CR>     " init.vim呼び出し
 "command init :<C-u>edit $MYVIMRC<CR>          " init.vim呼び出し
 "noremap <Space>s :source $MYVIMRC<CR>          " init.vim読み込み
@@ -142,3 +142,7 @@ function! s:denite_my_settings() abort
   nnoremap <silent><buffer><expr> <Space>
   \ denite#do_map('toggle_select').'j'
 endfunction
+
+" plugin keymaps
+" let g:terraform_fmt_on_save=1 "format terraform on save
+noremap <Leader>tf :<C-u>TerraformFmt<CR>
