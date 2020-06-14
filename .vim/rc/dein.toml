@@ -1,0 +1,102 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+let g:deoplete#enable_at_startup = 0
+'''
+
+[[plugins]]
+repo = 'ShouGo/denite.nvim'
+hook_add = '''
+nnoremap <silent> <Space>fr :<C-u>Denite file/rec<CR>
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+let g:airline_powerline_fonts = 1
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+hook_add = '''
+let g:airline_theme = 'deus'
+'''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+noremap sf :NERDTreeToggle<CR>
+'''
+
+[[plugins]]
+repo = 'Xuyuanp/nerdtree-git-plugin'
+
+[[plugins]]
+repo = 'dracula/vim'
+hook_add = '''
+colorscheme dracula
+set background="dark"
+syntax on
+'''
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+merge = 0
+rev = 'release'
+hook_add = '''
+source ~/.vim/rc/coc-setting.vim
+'''
+
+[[plugins]]
+repo = 'w0rp/ale'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+# インデントを可視化
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = '''
+"map f <Plug>(easymotion-fl)
+"map t <Plug>(easymotion-tl)
+"map F <Plug>(easymotion-Fl)
+"map T <Plug>(easymotion-Tl)
+map <Leader>ff <Plug>(easymotion-f2)
+
+nmap <Leader><Leader>s <Plug>(easymotion-s2)
+xmap <Leader><Leader>s <Plug>(easymotion-s2)
+" surround.vimと被らないように
+omap z <Plug>(easymotion-s2)
+'''
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html']
+
+[[plugins]]
+repo = 'hashivim/vim-terraform'
+on_ft = ['tf']
+
+[[plugins]]
+repo = 'elzr/vim-json'
+hook_add = '''
+let g:vim_json_syntax_conceal = 0
+'''
