@@ -38,6 +38,8 @@ repo = 'Xuyuanp/nerdtree-git-plugin'
 repo = 'dracula/vim'
 hook_add = '''
 colorscheme dracula
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight LineNr ctermbg=none
 set background="dark"
 syntax on
 '''
