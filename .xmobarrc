@@ -1,0 +1,63 @@
+Config {font = "xft:IPAPGothic:size=13:antialias=true"
+        , bgColor            = "#30358a"
+	, fgColor            = "#F1FFE7"
+	, border             = BottomB
+	, borderWidth        = 1
+	, borderColor        = "#000000"
+	, alpha              = 255
+	, position           = Top
+	, template = 
+            "%StdinReader%}{| <fc=#ee9a00>%fcitx%</fc> | %cpu% | %memory% | %dynnetwork% %wi% | %battery% | %date% "
+	, commands = 
+	  [ Run StdinReader
+	  , Run Cpu
+	        [ "--template"  , "CPU: <total>%"
+                , "--minwidth" , "3"
+                , "--Low"      , "30"
+                , "--High"     , "80"
+          	, "--low" 	   , "#C2E7DA"
+          	, "--normal"   , "#1A1B41"
+          	, "--high" 	   , "#FF9F1C"
+                ] 60
+	  , Run Memory
+                [ "--template"  , "MEM: <usedratio>%"
+                , "--minwidth"	, "3"
+                , "--Low"      	, "30"
+                , "--High"     	, "80"
+       		, "--low"	, "#C2E7DA"
+       	 	, "--normal"   	, "#1A1B41"
+       		, "--high" 	, "#FF9F1C"
+                ] 60                
+       	  , Run Battery
+                [ "--template" 	, "<acstatus>"
+       		, "--Low" 	, "10"
+       		, "--High" 	, "99"
+       		, "--low" 	, "#FF9F1C"
+       		, "--normal" 	, "#1A1B41"
+       		, "--high" 	, "#C2E7DA"
+		, "--"
+		, "-o"		, "BAT: <left>%"
+		, "-O"		, "AC: <left>%"
+		, "-i"		, "AC: <left>%"
+		] 60
+	  , Run DynNetwork
+                [ "--template" 	, "<dev>: <tx>KB <rx>KB"
+                , "--minwidth" 	, "4"
+                , "--Low"      	, "500000"
+                , "--High"     	, "2000000"
+           	, "--low"	, "#C2E7DA"
+          	, "--normal"   	, "#1A1B41"
+          	, "--high" 	, "#FF9F1C"
+                ] 20
+          , Run Wireless ""
+                [ "--template"	, "<fc=#6290C3,#F1FFE7> <essid> </fc> <quality>"
+                , "--Low"	, "50"
+                , "--High"     	, "70"
+       		, "--low"      	, "#C2E7DA"
+       		, "--normal"   	, "#1A1B41"
+       		, "--high" 	, "#FF9F1C"
+                ]  60
+          , Run Date "%Y/%-m/%-d %a %H:%M " "date" 10
+          , Run Com "./show_ime.sh" [] "fcitx" 5
+       	  ]
+}
