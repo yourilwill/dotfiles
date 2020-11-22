@@ -59,7 +59,7 @@ define_keymap(re.compile("Zeal"), {
 }, "Zeal")
 
 # Emacs-like keybindings in non-Emacs applications
-define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt", "fcitx"), {
+define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt", "fcitx", "tilix", "vim", "nvim"), {
     # Cursor
     K("LC-b"): with_mark(K("left")),
     K("LC-f"): with_mark(K("right")),
