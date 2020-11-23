@@ -3,6 +3,12 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Util.Run
 import XMonad.Hooks.ManageDocks
+import XMonad.Layout.Tabbed
+import XMonad.Layout.NoBorders
+import qualified XMonad.StackSet as W
+
+import XMonad.Util.EZConfig
+
 
 --------------------------------------------------------------------------- }}}
 -- local variables                                                          {{{
@@ -42,7 +48,7 @@ main = do
       , workspaces        = myWorkspaces
       , startupHook = myStartupHook
       , logHook = myLogHook h
-      , layoutHook = avoidStruts $ layoutHook def
+      , layoutHook = avoidStruts mylayouthook
       }
 
 
@@ -58,3 +64,22 @@ myStartupHook = do
     spawn "xcompmgr"
     spawn "sudo xkeysnail ~/config.py"
     spawn "unity-settings-daemon"
+
+mylayouthook =
+  mytall ||| mymirror ||| myfull ||| noBorders (tabbed shrinkText myTabConfig)
+  where mytall   =  Tall 1 0.03 0.5
+        mymirror =  Mirror mytall
+        myfull   =  Full
+
+myTabConfig = def { -- activeColor = "#556064"
+                    activeColor = "#005FFF"
+                  , inactiveColor = "#2F3D44"
+                  , urgentColor = "#FDF6E3"
+                  , activeBorderColor = "#454948"
+                  , inactiveBorderColor = "#454948"
+                  , urgentBorderColor = "#268BD2"
+                  , activeTextColor = "#80FFF9"
+                  , inactiveTextColor = "#1ABC9C"
+                  , urgentTextColor = "#1ABC9C"
+                  , fontName = "xft:Noto Sans CJK:size=10:antialias=true"
+                  }
