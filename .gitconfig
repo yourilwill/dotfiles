@@ -1,0 +1,15 @@
+[user]
+	email = yourilwill.n.h@gmail.com
+	name = yourilwill
+
+[alias]
+  st = status
+  branch = br
+  cm = commit
+  pl = pull
+  ps = push
+  co = checkout
+  a  = add
+  ss = stash
+  sl = stash list
+  pop = stash pop
