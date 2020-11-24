@@ -81,5 +81,5 @@ myTabConfig = def { -- activeColor = "#556064"
                   , activeTextColor = "#80FFF9"
                   , inactiveTextColor = "#1ABC9C"
                   , urgentTextColor = "#1ABC9C"
-                  , fontName = "xft:Noto Sans CJK:size=10:antialias=true"
+                  , fontName = "xft:Noto Sans CJK JP:size=10:antialias=true"
                   }
