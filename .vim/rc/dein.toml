@@ -83,8 +83,8 @@ hook_add = '''
 "map T <Plug>(easymotion-Tl)
 map <Leader>ff <Plug>(easymotion-f2)
 
-nmap <Leader><Leader>s <Plug>(easymotion-s2)
-xmap <Leader><Leader>s <Plug>(easymotion-s2)
+nmap <Leader>ss <Plug>(easymotion-s2)
+xmap <Leader>ss <Plug>(easymotion-s2)
 " surround.vimと被らないように
 omap z <Plug>(easymotion-s2)
 '''
