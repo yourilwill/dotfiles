@@ -70,7 +70,8 @@ nmap <silent> [ale]<C-P> <Plug>(ale_previous)
 nmap <silent> [ale]<C-N> <Plug>(ale_next)
 
 " Insert mode
-inoremap <silent> fd <ESC>:<C-u>w<CR>" Insert modeを抜けてファイルを保存
+" inoremap <silent> fd <ESC>:<C-u>w<CR>" Insert modeを抜けてファイルを保存
+inoremap fd <ESC>         " Insert modeを抜けてファイルを保存
 
 " encoding settings
 set encoding=utf-8
@@ -155,3 +156,22 @@ endfunction
 " plugin keymaps
 " let g:terraform_fmt_on_save=1 "format terraform on save
 noremap <Leader>tf :<C-u>TerraformFmt<CR>
+
+let g:clipboard = {
+    \   'name': 'myClipboard',
+    \   'copy': {
+    \      '+': 'win32yank.exe -i',
+    \      '*': 'win32yank.exe -i',
+    \    
+    \   },
+    \   'paste': {
+    \      '+': 'win32yank.exe -o',
+    \      '*': 'win32yank.exe -o',
+    \   
+    \   },
+    \   'cache_enabled': 1,
+    \ 
+\ }
+
+tnoremap <silent> <ESC> <C-\><C-n>
+tnoremap <silent> fd <C-\><C-n>
