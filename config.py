@@ -102,7 +102,8 @@ define_keymap(lambda wm_class: wm_class not in ("Emacs", "URxvt", "fcitx", "tili
     K("LC-r"): K("Shift-F3"),
     K("LM-Shift-key_5"): K("C-h"),
     # Cancel
-    K("LC-g"): [K("esc"), set_mark(False)],
+    # K("LC-g"): [K("esc"), set_mark(False)],
+    K("LC-g"): [set_mark(False), K("esc")],
     # Escape
     K("LC-q"): escape_next_key,
     # C-x YYY
