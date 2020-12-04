@@ -62,7 +62,7 @@ myLogHook h =
 myStartupHook = do
     -- spawn "feh --bg-scale ~/Downloads/catalina001.jpg"
     spawn "xcompmgr"
-    spawn "sudo xkeysnail ~/config.py"
+    -- spawn "sudo xkeysnail ~/config.py"
     spawn "unity-settings-daemon"
 
 mylayouthook =
