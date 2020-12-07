@@ -32,3 +32,6 @@ set -x FZF_DEFAULT_OPTS "--height 10% --reverse --border"
 
 alias g='git'
 alias xkey='sudo -E xkeysnail config.py'
+
+set --export http_proxy http://172.26.0.100:3128/
+set --export https_proxy http://172.26.0.100:3128/
