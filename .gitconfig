@@ -1,10 +1,9 @@
 [user]
-	email = yourilwill.n.h@gmail.com
-	name = yourilwill
+  email = yourilwill.n.h@gmail.com
+  name = yourilwill
 
 [alias]
   st = status
-  branch = br
   cm = commit
   pl = pull
   ps = push
@@ -13,3 +12,4 @@
   ss = stash
   sl = stash list
   pop = stash pop
+  br = branch
