@@ -1,6 +1,6 @@
 [user]
-	email = yourilwill.n.h@gmail.com
-	name = yourilwill
+  email = yourilwill.n.h@gmail.com
+  name = yourilwill
 
 [alias]
   st = status
@@ -12,4 +12,4 @@
   ss = stash
   sl = stash list
   pop = stash pop
-	br = branch
+  br = branch
