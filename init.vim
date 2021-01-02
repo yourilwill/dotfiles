@@ -29,7 +29,7 @@ if dein#load_state('~/.cache/dein')
   " TOMLを読み込み，キャッシュしておく
   call dein#load_toml('~/.vim/rc/dein.toml',      {'lazy': 0})
   call dein#load_toml('~/.vim/rc/dein_lazy.toml', {'lazy': 1})
- 
+
   " Add or remove your plugins here like this:
   "call dein#add('Shougo/neosnippet.vim')
   "calet  dein#add('Shougo/neosnippet-snippets')
@@ -56,7 +56,7 @@ syntax enable
 "End dein Scripts-------------------------
 
 
-" -------------------------------------------------- 
+" --------------------------------------------------
 "  keybind
 " --------------------------------------------------
 "  Normal mode
@@ -157,21 +157,23 @@ endfunction
 " let g:terraform_fmt_on_save=1 "format terraform on save
 noremap <Leader>tf :<C-u>TerraformFmt<CR>
 
-let g:clipboard = {
-    \   'name': 'myClipboard',
-    \   'copy': {
-    \      '+': 'win32yank.exe -i',
-    \      '*': 'win32yank.exe -i',
-    \    
-    \   },
-    \   'paste': {
-    \      '+': 'win32yank.exe -o',
-    \      '*': 'win32yank.exe -o',
-    \   
-    \   },
-    \   'cache_enabled': 1,
-    \ 
-\ }
+" let g:clipboard = {
+"     \   'name': 'myClipboard',
+"     \   'copy': {
+"     \      '+': 'win32yank.exe -i',
+"     \      '*': 'win32yank.exe -i',
+"     \
+"     \   },
+"     \   'paste': {
+"     \      '+': 'win32yank.exe -o',
+"     \      '*': 'win32yank.exe -o',
+"     \
+"     \   },
+"     \   'cache_enabled': 1,
+"     \
+" \ }
 
 tnoremap <silent> <ESC> <C-\><C-n>
 tnoremap <silent> fd <C-\><C-n>
+
+set clipboard+=unnamedplus

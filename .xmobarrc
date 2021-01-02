@@ -1,63 +1,57 @@
-Config {font = "xft:Noto Sans CJK JP:size=13:antialias=true"
-  , bgColor            = "#30358a"
-  , fgColor            = "#F1FFE7"
-  , border             = BottomB
-  , borderWidth        = 1
-  , borderColor        = "#000000"
-  , alpha              = 255
-  , position           = Top
-  , template =
-            "%StdinReader%}{| <fc=#ee9a00>%fcitx%</fc> | %cpu% | %memory% | %dynnetwork% %wi% | %battery% | %date% "
-  , commands =
-    [ Run StdinReader
-    , Run Cpu
-          [ "--template" , "CPU: <total>%"
-          , "--minwidth" , "3"
-          , "--Low"      , "30"
-          , "--High"     , "80"
-          , "--low" 	   , "#C2E7DA"
-          , "--normal"   , "#1A1B41"
-          , "--high" 	   , "#FF9F1C"
-          ] 60
-    , Run Memory
-          [ "--template"  , "MEM: <usedratio>%"
-          , "--minwidth"	, "3"
-          , "--Low"      	, "30"
-          , "--High"     	, "80"
-          , "--low"	      , "#C2E7DA"
-       	 	, "--normal"   	, "#1A1B41"
-          , "--high"      , "#FF9F1C"
-          ] 60
-    , Run Battery
-          [ "--template" 	, "<acstatus>"
-          , "--Low" 	, "10"
-          , "--High" 	, "99"
-          , "--low" 	, "#FF9F1C"
-          , "--normal", "#1A1B41"
-          , "--high" 	, "#C2E7DA"
-          , "--"
-          , "-o"      , "BAT: <left>%"
-          , "-O"      , "AC: <left>%"
-          , "-i"      , "AC: <left>%"
-          ] 60
-    , Run DynNetwork
-          [ "--template" 	, "<dev>: <tx>KB <rx>KB"
-          , "--minwidth" 	, "4"
-          , "--Low"      	, "500000"
-          , "--High"     	, "2000000"
-          , "--low"	      , "#C2E7DA"
-          , "--normal"   	, "#1A1B41"
-          , "--high" 	    , "#FF9F1C"
-          ] 20
-    , Run Wireless ""
-          [ "--template"  , "<fc=#6290C3,#F1FFE7> <essid> </fc> <quality>"
-          , "--Low"      	, "50"
-          , "--High"     	, "70"
-          , "--low"       , "#C2E7DA"
-          , "--normal"    , "#1A1B41"
-          , "--high"      , "#FF9F1C"
-          ]  60
-    , Run Date "%Y/%-m/%-d %a %H:%M " "date" 10
-    , Run Com "./show_ime.sh" [] "fcitx" 5
-    ]
+-- http://projects.haskell.org/xmobar/
+-- install xmobar with these flags: --flags="with_alsa" --flags="with_mpd" --flags="with_xft"  OR --flags="all_extensions"
+-- you can find weather location codes here: http://weather.noaa.gov/index.html
+
+Config { font = "xft:HackGenNerd-Regular:pixelsize=14:antialias=true:hinting=true"
+       , additionalFonts = [ "xft:monospace:pixelsize=15" ]
+       , bgColor = "#282A36"
+       , fgColor = "#B45BCF"
+       , position = Top
+       , lowerOnStart = True
+       , hideOnStart = False
+       , allDesktops = True
+       , persistent = True
+       , iconRoot = "~/.xmonad/xpm/"  -- default: "."
+       , commands = [
+
+           -- Time and date
+           Run Date "\xf133  %b %d %Y (%H:%M)" "date" 50
+
+           -- Network up and down
+           , Run Network "eth0" ["-t", "\xf0aa <rx>kb  \xf0ab <tx>kb"] 20
+
+           -- Cpu usage in percent
+           , Run Cpu ["-t", "\xf108  cpu: (<total>%)","-H","50","--high","red"] 20
+
+           -- Ram used number and percent
+           , Run Memory ["-t", "\xf233  mem: <used>M (<usedratio>%)"] 20
+
+           -- Disk space free
+           , Run DiskU [("/", "\xf0c7  hdd: <free> free")] [] 60
+
+           -- Battery
+           , Run Battery [
+                 "--Low"      , "20"        -- units: %
+               , "--High"     , "80"        -- units: %
+               , "--low"      , "darkred"
+               , "--normal"   , "green"
+               , "--high"     , "green"
+               , "--" -- battery specific options
+               -- discharging status
+               , "-o"	, "<left>% (<timeleft>)"
+               -- AC "on" status
+               , "-O"	, "<fc=#dAA520>Charging</fc>"
+               -- charged status
+               , "-i"	, "<fc=#006000>Charged</fc>"
+           ] 50
+
+           -- Runs a standard shell command 'uname -r' to get kernel version
+           , Run Com "uname" ["-r"] "" 36000
+
+           , Run UnsafeStdinReader
+       ]
+
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " <icon=haskell_20.xpm/> <fc=#666666>|</fc> %UnsafeStdinReader% }{ <fc=#b3afc2> %uname% </fc> <fc=#666666>| </fc><fc=#FFB86C>%cpu% </fc><fc=#666666>| </fc><fc=#F69317>%memory% </fc><fc=#666666>| </fc><fc=#82AAFF>%disku% </fc><fc=#666666>| </fc><fc=#c3e88d>%eth0% </fc><fc=#666666>| </fc><fc=#e1acff>| </fc><fc=#8BE9FD>%date%</fc> | <fc=#FF5555> %battery%</fc> |  "
 }
