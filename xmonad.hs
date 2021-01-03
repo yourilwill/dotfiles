@@ -25,7 +25,7 @@ myWorkspaces :: [String]
 myWorkspaces = clickable . (map xmobarEscape)
                $ ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
   where
-        clickable l = [ "<action=xdotool key super+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
+        clickable l = [ "<action=xdotool key alt+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
                       (i,ws) <- zip [1..9] l,
                       let n = i ]
 modm = mod4Mask
@@ -80,7 +80,7 @@ myLogHook h =
                  }
 
 myStartupHook = do
-    spawn "unity-settings-daemon"
+    -- spawn "unity-settings-daemon"
     spawn "xcompmgr"
     -- spawn "sudo xkeysnail ~/config.py"
     spawn "feh --bg-scale ~/Downloads/catalina001.jpg"
