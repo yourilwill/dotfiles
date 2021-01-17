@@ -1,0 +1,66 @@
+let mapleader = "\<Space>"
+
+set fenc=utf-8
+set autoread
+set nobackup
+set noswapfile
+set autoindent
+set nocompatible
+set hidden
+set incsearch
+set number
+set cursorline
+set ruler
+set virtualedit=onemore
+set laststatus=2
+set ignorecase
+set smartcase
+set wildmenu
+" set wildmode
+set wrapscan
+set hlsearch
+set showmatch
+set matchtime=1
+set showcmd
+set smartindent
+set smarttab
+set whichwrap=b,s,h,l,<,>,[,]
+set t_Co=256
+set tabstop=2
+set shiftwidth=2
+set expandtab
+colorscheme delek
+syntax enable
+
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+noremap <Leader>init :<C-u>edit $MYVIMRC<CR>
+inoremap fd <ESC>
+set splitbelow
+set splitright
+set noequalalways
+
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w<C-w>=
+nmap sw <C-w>c
+nmap s- <C-w>\_
+nmap s\ <C-w>\|
+nmap s= <C-w>=
+
+map sh <C-w>h
+map sk <C-w>k
+map sj <C-w>j
+map sl <C-w>l
+
+nmap te :tabnew<Return>
+nnoremap <S-tab> gT
+nnoremap <tab> gt
+
+nmap <C-w><left> <C-w><
+nmap <C-w><right> <C-w>>
+nmap <C-w><up> <C-w>+
+nmap <C-w><down> <C-w>-
