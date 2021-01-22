@@ -80,10 +80,10 @@ myLogHook h =
                  }
 
 myStartupHook = do
-    -- spawn "unity-settings-daemon"
+    spawn "unity-settings-daemon"
     spawn "xcompmgr"
     -- spawn "sudo xkeysnail ~/config.py"
-    spawn "feh --bg-scale ~/Downloads/catalina001.jpg"
+    -- spawn "feh --bg-scale ~/Downloads/catalina001.jpg"
 
 mylayouthook =
   mytall ||| mymirror ||| myfull ||| noBorders (tabbed shrinkText myTabConfig)
