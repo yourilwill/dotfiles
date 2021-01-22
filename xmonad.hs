@@ -14,7 +14,20 @@ import XMonad.Util.EZConfig
 -- local variables                                                          {{{
 -------------------------------------------------------------------------------
 
-myWorkspaces = map show [1..5 ::Int]
+-- myWorkspaces = map show [1..5 ::Int]
+---WORKSPACES
+xmobarEscape = concatMap doubleLts
+  where
+        doubleLts '<' = "<<"
+        doubleLts x   = [x]
+
+myWorkspaces :: [String]
+myWorkspaces = clickable . (map xmobarEscape)
+               $ ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+  where
+        clickable l = [ "<action=xdotool key alt+" ++ show (n) ++ ">" ++ ws ++ "</action>" |
+                      (i,ws) <- zip [1..9] l,
+                      let n = i ]
 modm = mod4Mask
 
 -- Color Setting
@@ -30,15 +43,17 @@ colorfg        = "#a8b6b8"
 borderwidth = 3
 
 -- Border color
-mynormalBorderColor  = "#cccccc"
-myfocusedBorderColor = "#00bbff"
+-- mynormalBorderColor  = "#cccccc"
+mynormalBorderColor  = "#292d3e"
+-- myfocusedBorderColor = "#00bbff"
+myfocusedBorderColor = "#6666ff"
 
 --------------------------------------------------------------------------- }}}
 -- main                                                                     {{{
 -------------------------------------------------------------------------------
 
 main = do
-  h <- spawnPipe "xmobar"
+  h <- spawnPipe "~/.local/bin/xmobar"
   xmonad $ ewmh $ docks def
       { terminal = "tilix"
       , borderWidth = borderwidth
@@ -55,15 +70,20 @@ main = do
 myLogHook h =
     dynamicLogWithPP
         xmobarPP { ppOutput = hPutStrLn h
-                 , ppCurrent = xmobarColor "#FF9F1C" "#1A1B41" . pad . wrap "[" "]"
-                 , ppTitle = xmobarColor "#1A1B41" "#C2E7DA" . shorten 50 . pad
+                 , ppCurrent = xmobarColor "#FF9F1C" "#1A1B41" . wrap "[" "]"
+                 , ppVisible = xmobarColor "#c3e88d" ""
+                 , ppHidden = xmobarColor "#82AAFF" "" .wrap "*" ""
+                 , ppHiddenNoWindows = xmobarColor "#F07178" ""
+                 , ppTitle = xmobarColor "#d0d0d0" "" . shorten 60
+                 , ppSep = "<fc=#666666> | </fc>"
+                 , ppUrgent = xmobarColor "#C45500" "" . wrap "|" "|"
                  }
 
 myStartupHook = do
-    -- spawn "feh --bg-scale ~/Downloads/catalina001.jpg"
+    spawn "unity-settings-daemon"
     spawn "xcompmgr"
     -- spawn "sudo xkeysnail ~/config.py"
-    spawn "unity-settings-daemon"
+    -- spawn "feh --bg-scale ~/Downloads/catalina001.jpg"
 
 mylayouthook =
   mytall ||| mymirror ||| myfull ||| noBorders (tabbed shrinkText myTabConfig)
