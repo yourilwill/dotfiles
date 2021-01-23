@@ -176,4 +176,8 @@ noremap <Leader>tf :<C-u>TerraformFmt<CR>
 tnoremap <silent> <ESC> <C-\><C-n>
 tnoremap <silent> fd <C-\><C-n>
 
+" use OS clipboard
 set clipboard+=unnamedplus
+
+" use histogram diff algorithm (better diff)
+set diffopt=filler,internal,algorithm:histogram,indent-heuristic
