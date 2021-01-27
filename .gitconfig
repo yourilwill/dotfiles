@@ -13,3 +13,4 @@
   sl = stash list
   pop = stash pop
   br = branch
+  df = diff
