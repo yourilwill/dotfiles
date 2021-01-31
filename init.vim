@@ -29,7 +29,7 @@ if dein#load_state('~/.cache/dein')
   " TOMLを読み込み，キャッシュしておく
   call dein#load_toml('~/.vim/rc/dein.toml',      {'lazy': 0})
   call dein#load_toml('~/.vim/rc/dein_lazy.toml', {'lazy': 1})
- 
+
   " Add or remove your plugins here like this:
   "call dein#add('Shougo/neosnippet.vim')
   "calet  dein#add('Shougo/neosnippet-snippets')
@@ -56,7 +56,7 @@ syntax enable
 "End dein Scripts-------------------------
 
 
-" -------------------------------------------------- 
+" --------------------------------------------------
 "  keybind
 " --------------------------------------------------
 "  Normal mode
@@ -70,7 +70,8 @@ nmap <silent> [ale]<C-P> <Plug>(ale_previous)
 nmap <silent> [ale]<C-N> <Plug>(ale_next)
 
 " Insert mode
-inoremap <silent> fd <ESC>:<C-u>w<CR>" Insert modeを抜けてファイルを保存
+" inoremap <silent> fd <ESC>:<C-u>w<CR>" Insert modeを抜けてファイルを保存
+inoremap fd <ESC>         " Insert modeを抜けてファイルを保存
 
 " encoding settings
 set encoding=utf-8
@@ -155,3 +156,28 @@ endfunction
 " plugin keymaps
 " let g:terraform_fmt_on_save=1 "format terraform on save
 noremap <Leader>tf :<C-u>TerraformFmt<CR>
+
+" let g:clipboard = {
+"     \   'name': 'myClipboard',
+"     \   'copy': {
+"     \      '+': 'win32yank.exe -i',
+"     \      '*': 'win32yank.exe -i',
+"     \
+"     \   },
+"     \   'paste': {
+"     \      '+': 'win32yank.exe -o',
+"     \      '*': 'win32yank.exe -o',
+"     \
+"     \   },
+"     \   'cache_enabled': 1,
+"     \
+" \ }
+
+tnoremap <silent> <ESC> <C-\><C-n>
+tnoremap <silent> fd <C-\><C-n>
+
+" use OS clipboard
+set clipboard+=unnamedplus
+
+" use histogram diff algorithm (better diff)
+set diffopt=filler,internal,algorithm:histogram,indent-heuristic

@@ -6,6 +6,14 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Layout.Tabbed
 import XMonad.Layout.NoBorders
 import qualified XMonad.StackSet as W
+import XMonad.Layout.LayoutModifier
+import XMonad.Layout.Spacing
+import XMonad.Layout.ResizeScreen
+import XMonad.Layout.WindowNavigation
+import XMonad.Layout.SubLayouts
+import XMonad.Layout.Simplest
+import XMonad.Layout.Renamed
+import XMonad.Layout.ResizableTile
 
 import XMonad.Util.EZConfig
 
@@ -85,21 +93,45 @@ myStartupHook = do
     -- spawn "sudo xkeysnail ~/config.py"
     -- spawn "feh --bg-scale ~/Downloads/catalina001.jpg"
 
-mylayouthook =
-  mytall ||| mymirror ||| myfull ||| noBorders (tabbed shrinkText myTabConfig)
+mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
+mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
+mySpacing' :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
+mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
+
+-- myTabTheme = def { fontName            = "xft:Noto Sans CJK JP:size=10:antialias=true"
+--                  , activeColor         = "#46d9ff"
+--                  , inactiveColor       = "#313846"
+--                  , activeBorderColor   = "#46d9ff"
+--                  , inactiveBorderColor = "#282c34"
+--                  , activeTextColor     = "#282c34"
+--                  , inactiveTextColor   = "#d0d0d0"
+--                  }
+
+gap_tall = renamed [Replace "gap_tall"]
+           $ windowNavigation
+           -- $ subLayout [] (smartBorders Simplest)
+           $ addTabs shrinkText myTabConfig
+           $ mySpacing 8
+           $ ResizableTall 1 (3/100) (1/2) []
+
+mylayouthook =   gap_tall
+             ||| mytall
+             ||| mymirror
+             ||| myfull
+             ||| noBorders (tabbed shrinkText myTabConfig)
   where mytall   =  Tall 1 0.03 0.5
         mymirror =  Mirror mytall
         myfull   =  Full
 
-myTabConfig = def { -- activeColor = "#556064"
-                    activeColor = "#005FFF"
-                  , inactiveColor = "#2F3D44"
-                  , urgentColor = "#FDF6E3"
-                  , activeBorderColor = "#454948"
-                  , inactiveBorderColor = "#454948"
-                  , urgentBorderColor = "#268BD2"
+myTabConfig = def {
+                    activeColor = myfocusedBorderColor
+                  , inactiveColor = mynormalBorderColor
+                  -- , urgentColor = "#FDF6E3"
+                  , activeBorderColor = myfocusedBorderColor
+                  , inactiveBorderColor = mynormalBorderColor
+                  -- , urgentBorderColor = "#268BD2"
                   , activeTextColor = "#80FFF9"
                   , inactiveTextColor = "#1ABC9C"
-                  , urgentTextColor = "#1ABC9C"
+                  -- , urgentTextColor = "#1ABC9C"
                   , fontName = "xft:Noto Sans CJK JP:size=10:antialias=true"
                   }
