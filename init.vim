@@ -89,7 +89,10 @@ set matchtime=1                                " 強調する時間を短く
 set hlsearch                                   " 検索結果をハイライト
 set hidden                                     " 保存せずに別ファイルに切り替える
 set list                                       " 不可視文字の表示
+set listchars=tab:»-,trail:-,eol:↓,extends:»,precedes:«,nbsp:%
 syntax on                                      " シンタックスハイライト
+nnoremap <silent> <C-j> :bnext<CR>
+nnoremap <silent> <C-k> :bprev<CR>
 nnoremap k gk
 nnoremap gk k
 nnoremap j gj

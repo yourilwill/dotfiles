@@ -32,6 +32,10 @@ set matchtime=1                                " 強調する時間を短く
 set hlsearch                                   " 検索結果をハイライト
 set hidden                                     " 保存せずに別ファイルに切り替える
 syntax on                                      " シンタックスハイライト
+set list                                       " 不可視文字の表示
+set listchars=tab:»-,trail:-,eol:↓,extends:»,precedes:«,nbsp:%
+nnoremap <silent> <C-j> :bnext<CR>
+nnoremap <silent> <C-k> :bprev<CR>
 nnoremap k gk
 nnoremap gk k
 nnoremap j gj
@@ -113,8 +117,8 @@ call plug#end()
 colorscheme dracula
 noremap sf :NERDTreeToggle<CR>
 
-"autocmd ColorScheme * highlight Normal ctermbg=none
-"autocmd ColorScheme * highlight LineNr ctermbg=none
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight LineNr ctermbg=none
 set background="dark"
 
 let g:airline_theme = 'deus'
@@ -127,3 +131,5 @@ xmap <Leader>ss <Plug>(easymotion-s2)
 " surround.vimと被らないように
 omap z <Plug>(easymotion-s2)
 
+hi SpecialKey ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
+hi NonText ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
