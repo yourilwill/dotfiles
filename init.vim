@@ -88,6 +88,7 @@ set showmatch                                  " 対応するカッコを強調
 set matchtime=1                                " 強調する時間を短く
 set hlsearch                                   " 検索結果をハイライト
 set hidden                                     " 保存せずに別ファイルに切り替える
+set list                                       " 不可視文字の表示
 syntax on                                      " シンタックスハイライト
 nnoremap k gk
 nnoremap gk k
