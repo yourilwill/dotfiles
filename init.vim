@@ -111,9 +111,9 @@ set shiftwidth=2                               " tabの幅
 nmap ss :split<Return><C-w>w                   " windowを水平方向に分割
 nmap sv :vsplit<Return><C-w>w<C-w>=            " windowを縦方向に分割
 nmap sw <C-w>c                                 " windowを閉じる
-nmap s- <C-w>\_                                " 縦に最大化
+nmap s- <C-w>_                                " 縦に最大化
 nmap s\ <C-w>\|                                " 横に最大化
-"nmap so <C-w>\_<C-w>\|                         " 縦横に最大化
+nmap so <C-w>_<C-w>\|                         " 縦横に最大化
 nmap s= <C-w>=                                 " 大きさを揃える
 
 " move window
