@@ -33,4 +33,5 @@ set -x FZF_DEFAULT_OPTS "--height 10% --reverse --border"
 alias g='git'
 alias xkey='sudo -E xkeysnail config.py'
 
-# set -U fish_user_paths (echo $fish_user_paths | tr ' ' '\n' | sort -u)
+set PATH ~/go/bin /home/youril/ghq/github.com/junegunn/fzf/bin $PATH
+#set -U fish_user_paths (echo $fish_user_paths | tr ' ' '\n' | sort -u)
