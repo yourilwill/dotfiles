@@ -1,5 +1,13 @@
 " プラグイン読み込み前にleaderを設定
 let mapleader = "\<Space>"
+if has('vim_starting')
+    " 挿入モード時に非点滅の縦棒タイプのカーソル
+    let &t_SI .= "\e[6 q"
+    " ノーマルモード時に非点滅のブロックタイプのカーソル
+    let &t_EI .= "\e[2 q"
+    " 置換モード時に非点滅の下線タイプのカーソル
+    let &t_SR .= "\e[4 q"
+endif
 
 "dein Scripts-----------------------------
 if &compatible
@@ -71,9 +79,20 @@ nmap <silent> [ale]<C-N> <Plug>(ale_next)
 
 " Insert mode
 " inoremap <silent> fd <ESC>:<C-u>w<CR>" Insert modeを抜けてファイルを保存
-inoremap fd <ESC>         " Insert modeを抜けてファイルを保存
+" inoremap fd <ESC>         " Insert modeを抜けてファイルを保存
 
+" Ex mode
+set pastetoggle=<f5>
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+"cnoremap <C-b> <Left>
+"cnoremap <C-f> <Right>
+"cnoremap <C-a> <Home>
+"cnoremap <C-e> <End>
+"cnoremap <C-d> <Del>
 " encoding settings
+
 set encoding=utf-8
 
 " editor settings
@@ -113,7 +132,7 @@ nmap sv :vsplit<Return><C-w>w<C-w>=            " windowを縦方向に分割
 nmap sw <C-w>c                                 " windowを閉じる
 nmap s- <C-w>_                                " 縦に最大化
 nmap s\ <C-w>\|                                " 横に最大化
-nmap so <C-w>_<C-w>\|                         " 縦横に最大化
+nmap sz <C-w>_<C-w>\|                         " 縦横に最大化
 nmap s= <C-w>=                                 " 大きさを揃える
 
 " move window
@@ -157,25 +176,21 @@ function! s:denite_my_settings() abort
   \ denite#do_map('toggle_select').'j'
 endfunction
 
+let s:denite_win_width_percent = 0.85
+let s:denite_win_height_percent = 0.7
+
+" Change denite default options
+call denite#custom#option('default', {
+    \ 'split': 'floating',
+    \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
+    \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
+    \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
+    \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
+    \ })
+
 " plugin keymaps
 " let g:terraform_fmt_on_save=1 "format terraform on save
 noremap <Leader>tf :<C-u>TerraformFmt<CR>
-
-" let g:clipboard = {
-"     \   'name': 'myClipboard',
-"     \   'copy': {
-"     \      '+': 'win32yank.exe -i',
-"     \      '*': 'win32yank.exe -i',
-"     \
-"     \   },
-"     \   'paste': {
-"     \      '+': 'win32yank.exe -o',
-"     \      '*': 'win32yank.exe -o',
-"     \
-"     \   },
-"     \   'cache_enabled': 1,
-"     \
-" \ }
 
 tnoremap <silent> <ESC> <C-\><C-n>
 tnoremap <silent> fd <C-\><C-n>
