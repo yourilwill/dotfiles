@@ -91,17 +91,17 @@ cnoremap <C-n> <Down>
 "cnoremap <C-a> <Home>
 "cnoremap <C-e> <End>
 "cnoremap <C-d> <Del>
-" encoding settings
 
+" encoding settings
 set encoding=utf-8
 
 " editor settings
 set number                                     " 行番号表示
 set splitbelow                                 " 水平分割時に下に表示
-set splitright                                 " 縦分割時を右に表示
+set splitright                                 " 縦分割時に右に表示
 set noequalalways                              " 分割時に自動調整を無効化
 set wildmenu                                   " コマンドモードの補完
-" set relativenumber                             " 行番号を相対表示に
+"set relativenumber                             " 行番号を相対表示に
 set smartindent                                " インデントを改善
 set showmatch                                  " 対応するカッコを強調
 set matchtime=1                                " 強調する時間を短く
@@ -130,9 +130,9 @@ set shiftwidth=2                               " tabの幅
 nmap ss :split<Return><C-w>w                   " windowを水平方向に分割
 nmap sv :vsplit<Return><C-w>w<C-w>=            " windowを縦方向に分割
 nmap sw <C-w>c                                 " windowを閉じる
-nmap s- <C-w>_                                " 縦に最大化
+nmap s- <C-w>_                                 " 縦に最大化
 nmap s\ <C-w>\|                                " 横に最大化
-nmap sz <C-w>_<C-w>\|                         " 縦横に最大化
+nmap sz <C-w>_<C-w>\|                          " 縦横に最大化
 nmap s= <C-w>=                                 " 大きさを揃える
 
 " move window
