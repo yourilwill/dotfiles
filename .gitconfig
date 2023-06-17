@@ -14,3 +14,6 @@
   pop = stash pop
   br = branch
   df = diff
+
+[pull]
+	rebase = false
