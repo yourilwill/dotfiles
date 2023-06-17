@@ -1,10 +1,9 @@
 [user]
-	email =
-	name =
+  email =
+  name =
 
 [alias]
   st = status
-  branch = br
   cm = commit
   pl = pull
   ps = push
@@ -13,3 +12,8 @@
   ss = stash
   sl = stash list
   pop = stash pop
+  br = branch
+  df = diff
+
+[pull]
+	rebase = false

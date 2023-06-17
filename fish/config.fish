@@ -1,11 +1,13 @@
 set PATH /usr/local/bin /usr/sbin $PATH
-set -x RBENV_ROOT "$HOME/.rbenv"
-status --is-interactive; and source (anyenv init -|psub)
-#set PATH $RBENV_ROOT $PATH
-status --is-interactive; and source (rbenv init -|psub)
+# set -x RBENV_ROOT "$HOME/.rbenv"
+# status --is-interactive; and source (anyenv init -|psub)
+# set PATH $RBENV_ROOT $PATH
+# status --is-interactive; and source (rbenv init -|psub)
 
-set PATH $HOME/.pyenv/shims $PATH
-eval (pyenv init - | source)
+# set PATH $HOME/.pyenv/shims $PATH
+# eval (pyenv init - | source)
+
+source ~/.asdf/asdf.fish
 
 set -U FZF_LEGACY_KEYBINDINGS 0
 
@@ -26,5 +28,10 @@ end
 # 一覧の上を最新として、境目をボーダーに
 set -x FZF_DEFAULT_OPTS "--height 10% --reverse --border"
 
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+# test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
+alias g='git'
+alias xkey='sudo -E xkeysnail config.py'
+
+set PATH ~/go/bin /home/youril/ghq/github.com/junegunn/fzf/bin $PATH
+#set -U fish_user_paths (echo $fish_user_paths | tr ' ' '\n' | sort -u)
