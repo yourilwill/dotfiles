@@ -1,3 +1,4 @@
 fish/fish_variables
 .vim/autoload/
 .vim/plugged/
+lazy-lock.json
