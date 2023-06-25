@@ -17,10 +17,10 @@ fi
 if [ -f ~/.git-prompt.sh ]; then
     source ~/.git-prompt.sh
 fi
-GIT_PS1_SHOWDIRTYSTATE=
-GIT_PS1_SHOWUNTRACKEDFILES=
-GIT_PS1_SHOWSTASHSTATE=true
-GIT_PS1_SHOWUPSTREAM=auto
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWSTASHSTATE=
+GIT_PS1_SHOWUPSTREAM=
 
 #PS1='[\[\033[32m\]\u@\h\[\033[00m\] \[\033[33m\]\w\[\033[1;36m\]$(__git_ps1 " (%s)")\[\033[00m\]]\n\$ '
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\033[1;36m\]$(__git_ps1 " (%s)")\[\033[00m\]\$ '
