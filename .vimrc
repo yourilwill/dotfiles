@@ -153,3 +153,10 @@ omap z <Plug>(easymotion-s2)
 
 hi SpecialKey ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
 hi NonText ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
+
+if &term =~ "screen-256color"
+    let &t_BE = "\e[?2004h"
+    let &t_BD = "\e[?2004l"
+    exec "set t_PS=\e[200~"
+    exec "set t_PE=\e[201~"
+endif
