@@ -4,6 +4,7 @@
 
 [alias]
   st = status
+  sw = switch
   cm = commit
   pl = pull
   ps = push
